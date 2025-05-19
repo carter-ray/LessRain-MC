@@ -1,0 +1,35 @@
+{
+	"schemaVersion": 1,
+	"id": "less-rain",
+	"version": "${version}",
+	"name": "Less Rain",
+	"description": "Change the amount of time betwen rains",
+	"authors": [
+		"Carter Ray"
+	],
+	"contact": {
+		"homepage": "https://fabricmc.net/",
+		"sources": "https://github.com/carter-ray/lessrainmc"
+	},
+	"license": "CC0-1.0",
+	"icon": "assets/less-rain/icon.png",
+	"environment": "*",
+	"entrypoints": {
+		"main": [
+			"com.lessrain.LessRain"
+		]
+	},
+	"mixins": [
+		"less-rain.mixins.json",
+		{
+			"config": "less-rain.mixins.json",
+			"environment": "main"
+		}
+	],
+	"depends": {
+		"fabricloader": ">=0.16.14",
+		"minecraft": "~1.21.5",
+		"java": ">=21",
+		"fabric-api": "*"
+	}
+}
