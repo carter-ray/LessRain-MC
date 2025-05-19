@@ -1,6 +1,6 @@
-package com.example.mymod.config;
+package com.lessrain.config;
 
-import com.example.mymod.MyMod;
+import com.lessrain.LessRain;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 
@@ -14,7 +14,7 @@ public class LessRainConfig {
     public int maxRainDuration = 264000;
 
     private static final Gson GSON = new GsonBuilder().setPrettyPrinting().create();
-    private static final File CONFIG_FILE = new File("config/" + MyMod.MOD_ID + ".json");
+    private static final File CONFIG_FILE = new File("config/" + LessRain.MOD_ID + ".json");
 
     public static LessRainConfig INSTANCE = new LessRainConfig();
 

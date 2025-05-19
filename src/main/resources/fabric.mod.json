@@ -9,10 +9,10 @@
 	],
 	"contact": {
 		"homepage": "https://fabricmc.net/",
-		"sources": "https://github.com/carter-ray/lessrainmc"
+		"sources": "https://github.com/carter-ray/LessRain-MC"
 	},
 	"license": "CC0-1.0",
-	"icon": "assets/less-rain/icon.png",
+	"icon": "assets/lessrain/icon.png",
 	"environment": "*",
 	"entrypoints": {
 		"main": [
@@ -20,11 +20,7 @@
 		]
 	},
 	"mixins": [
-		"less-rain.mixins.json",
-		{
-			"config": "less-rain.mixins.json",
-			"environment": "main"
-		}
+		"lessrain.mixins.json"
 	],
 	"depends": {
 		"fabricloader": ">=0.16.14",
