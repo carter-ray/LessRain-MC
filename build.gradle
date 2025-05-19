@@ -94,7 +94,7 @@ publishing {
 			url = uri("https://maven.pkg.github.com/carter-ray/LessRain-MC")
 			credentials {
 				username = System.getProperty("GITHUB_USERNAME")
-                password = System.getProperty("GITHUB_TOKEN")
+				password = System.getProperty("GITHUB_TOKEN")
 			}
 		}
 	}
