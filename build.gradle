@@ -3,6 +3,24 @@ plugins {
 	id 'maven-publish'
 }
 
+import java.util.Properties
+
+def loadEnv() {
+    def envFile = file('.env')
+    if (envFile.exists()) {
+        def props = new Properties()
+        envFile.withInputStream { props.load(it) }
+        props.each { key, value ->
+            if (!System.getenv(key)) {
+                System.setProperty(key, value)
+            }
+        }
+    }
+}
+
+loadEnv()
+
+
 version = project.mod_version
 group = project.maven_group
 
@@ -72,9 +90,12 @@ publishing {
 
 	// See https://docs.gradle.org/current/userguide/publishing_maven.html for information on how to set up publishing.
 	repositories {
-		// Add repositories to publish to here.
-		// Notice: This block does NOT have the same function as the block in the top level.
-		// The repositories here will be used for publishing your artifact, not for
-		// retrieving dependencies.
+		maven {
+			url = uri("https://maven.pkg.github.com/carter-ray/LessRain-MC")
+			credentials {
+				username = System.getProperty("GITHUB_USERNAME")
+                password = System.getProperty("GITHUB_TOKEN")
+			}
+		}
 	}
 }

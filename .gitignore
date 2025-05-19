@@ -23,5 +23,4 @@ replay_*.log
 *.hprof
 *.jfr
 
-.github/
 .env
