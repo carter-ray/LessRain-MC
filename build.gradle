@@ -91,7 +91,7 @@ publishing {
 	// See https://docs.gradle.org/current/userguide/publishing_maven.html for information on how to set up publishing.
 	repositories {
 		maven {
-			url = uri("https://maven.pkg.github.com/carter-ray/LessRain-MC")
+			url = uri("https://maven.pkg.github.com/carter-ray/raindelay-MC")
 			credentials {
 				username = System.getProperty("GITHUB_USERNAME")
 				password = System.getProperty("GITHUB_TOKEN")

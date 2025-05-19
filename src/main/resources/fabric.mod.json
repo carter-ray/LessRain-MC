@@ -9,18 +9,18 @@
 	],
 	"contact": {
 		"homepage": "https://fabricmc.net/",
-		"sources": "https://github.com/carter-ray/LessRain-MC"
+		"sources": "https://github.com/carter-ray/raindelay-MC"
 	},
 	"license": "CC0-1.0",
-	"icon": "assets/lessrain/icon.png",
+	"icon": "assets/raindelay/icon.png",
 	"environment": "*",
 	"entrypoints": {
 		"main": [
-			"com.lessrain.LessRain"
+			"com.raindelay.raindelay"
 		]
 	},
 	"mixins": [
-		"lessrain.mixins.json"
+		"raindelay.mixins.json"
 	],
 	"depends": {
 		"fabricloader": ">=0.16.14",
