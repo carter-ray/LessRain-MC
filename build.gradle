@@ -33,9 +33,8 @@ loom {
 	splitEnvironmentSourceSets()
 
 	mods {
-		"less-rain" {
+		"rain-delay" {
 			sourceSet sourceSets.main
-			sourceSet sourceSets.client
 		}
 	}
 
@@ -48,6 +47,7 @@ dependencies {
 	modImplementation "net.fabricmc:fabric-loader:${project.loader_version}"
 	modImplementation "net.fabricmc.fabric-api:fabric-api:${project.fabric_version}" // optional but recommended
 }
+
 
 processResources {
 	inputs.property "version", project.version

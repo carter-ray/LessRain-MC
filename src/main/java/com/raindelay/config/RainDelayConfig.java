@@ -10,8 +10,17 @@ import java.io.FileWriter;
 import java.io.IOException;
 
 public class RainDelayConfig {
-    public int minRainDuration = 96000;
-    public int maxRainDuration = 264000;
+    public int minTicksAfterRainEnds = 96000;
+    public int maxTicksAfterRainEnds = 264000;
+
+    public int minTicksAfterThunderEnds = 96000;
+    public int maxTicksAfterThunderEnds = 264000;
+
+    public int minRainDuration = 12000;
+    public int maxRainDuration = 24000;
+
+    public int minThunderDuration = 3600;
+    public int maxThunderDuraton = 15600;
 
     private static final Gson GSON = new GsonBuilder().setPrettyPrinting().create();
     private static final File CONFIG_FILE = new File("config/" + RainDelay.MOD_ID + ".json");

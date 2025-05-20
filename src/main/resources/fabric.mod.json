@@ -1,8 +1,8 @@
 {
 	"schemaVersion": 1,
-	"id": "less-rain",
+	"id": "rain-delay",
 	"version": "${version}",
-	"name": "Less Rain",
+	"name": "Rain Delay",
 	"description": "Change the amount of time betwen rains",
 	"authors": [
 		"Carter Ray"
@@ -16,7 +16,7 @@
 	"environment": "*",
 	"entrypoints": {
 		"main": [
-			"com.raindelay.raindelay"
+			"com.raindelay.RainDelay"
 		]
 	},
 	"mixins": [
