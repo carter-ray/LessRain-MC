@@ -9,7 +9,7 @@ on:
     branches:
       - main
     tags-ignore:
-      - 'v*'       # ignore tags starting with "v"
+      - 'v*'
   pull_request:
     branches:
       - main
