@@ -3,7 +3,7 @@
 	"id": "rain-delay",
 	"version": "${version}",
 	"name": "Rain Delay",
-	"description": "Change the amount of time betwen rains",
+	"description": "Allows editing the number of ticks of clear weather after rain/thunder and the number of ticks that rain/thunder will last.",
 	"authors": [
 		"Carter Ray"
 	],
@@ -17,6 +17,9 @@
 	"entrypoints": {
 		"main": [
 			"com.raindelay.RainDelay"
+		],
+		"modmenu": [ 
+			"com.raindelay.RainDelayModMenu"
 		]
 	},
 	"mixins": [
@@ -27,5 +30,11 @@
 		"minecraft": "~1.21.5",
 		"java": ">=21",
 		"fabric-api": "*"
+	},
+	"custom": {
+  		"modmenu": {
+			"update_checker": true	
+		}
 	}
+
 }

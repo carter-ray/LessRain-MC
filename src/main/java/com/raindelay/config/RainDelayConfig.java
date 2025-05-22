@@ -4,10 +4,11 @@ import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import com.raindelay.RainDelay;
 
-import java.io.File;
-import java.io.FileReader;
-import java.io.FileWriter;
+import net.fabricmc.loader.api.FabricLoader;
+
 import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Path;
 
 public class RainDelayConfig {
     public int minTicksAfterRainEnds = 96000;
@@ -20,30 +21,33 @@ public class RainDelayConfig {
     public int maxRainDuration = 24000;
 
     public int minThunderDuration = 3600;
-    public int maxThunderDuraton = 15600;
+    public int maxThunderDuration = 15600;
 
     private static final Gson GSON = new GsonBuilder().setPrettyPrinting().create();
-    private static final File CONFIG_FILE = new File("config/" + RainDelay.MOD_ID + ".json");
+    private static final Path CONFIG_FILE = FabricLoader.getInstance().getConfigDir().resolve("raindelay.json");
 
-    public static RainDelayConfig INSTANCE = new RainDelayConfig();
+    public static RainDelayConfig INSTANCE = load();
 
-    public static void load() {
-        if (CONFIG_FILE.exists()) {
-            try (FileReader reader = new FileReader(CONFIG_FILE)) {
-                INSTANCE = GSON.fromJson(reader, RainDelayConfig.class);
+    public static RainDelayConfig load() {
+        if (Files.exists(CONFIG_FILE)) {
+            try {
+                String json = Files.readString(CONFIG_FILE);
+                return GSON.fromJson(json, RainDelayConfig.class);
             } catch (IOException e) {
                 System.err.println("Failed to read config: " + e);
             }
-        } else {
-            save(); // create default config
         }
+        return new RainDelayConfig();
     }
 
-    public static void save() {
-        try (FileWriter writer = new FileWriter(CONFIG_FILE)) {
-            GSON.toJson(INSTANCE, writer);
+    public void save() {
+        try {
+            Files.createDirectories(CONFIG_FILE.getParent());
+            Files.writeString(CONFIG_FILE, GSON.toJson(this));
         } catch (IOException e) {
             System.err.println("Failed to save config: " + e);
         }
+        RainDelay.initProviders();
     }
+
 }

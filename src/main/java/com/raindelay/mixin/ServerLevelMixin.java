@@ -4,22 +4,16 @@ package com.raindelay.mixin;
 import net.minecraft.server.world.ServerWorld;
 import net.minecraft.util.math.random.Random;
 import net.minecraft.util.math.intprovider.IntProvider;
-import net.minecraft.util.math.intprovider.UniformIntProvider;
 
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Redirect;
 
-import com.raindelay.config.RainDelayConfig;
+import com.raindelay.RainDelay;
 
 @Mixin(ServerWorld.class)
 public abstract class ServerLevelMixin {
-	private static final IntProvider rainDelayProvider = UniformIntProvider.create(RainDelayConfig.INSTANCE.minTicksAfterRainEnds, RainDelayConfig.INSTANCE.maxTicksAfterRainEnds);
-	private static final IntProvider thunderDelayProvider = UniformIntProvider.create(RainDelayConfig.INSTANCE.minTicksAfterThunderEnds, RainDelayConfig.INSTANCE.maxTicksAfterThunderEnds);
-
-	private static final IntProvider rainDurationProvider = UniformIntProvider.create(RainDelayConfig.INSTANCE.minRainDuration, RainDelayConfig.INSTANCE.maxRainDuration);
-	private static final IntProvider thunderDurationProvider = UniformIntProvider.create(RainDelayConfig.INSTANCE.minThunderDuration, RainDelayConfig.INSTANCE.maxThunderDuraton);
-
+	
 	@Redirect(
 		method = "tickWeather",
 		at = @At(
@@ -29,7 +23,7 @@ public abstract class ServerLevelMixin {
 		)
 	)
 	private int redirectThunderDuration(IntProvider provider, Random random) {
-		return thunderDurationProvider.get(random);
+		return RainDelay.thunderDurationProvider.get(random);
 	}
 
 	@Redirect(
@@ -41,7 +35,7 @@ public abstract class ServerLevelMixin {
 		)
 	)
 	private int redirectThunderDelay(IntProvider provider, Random random) {
-		return thunderDelayProvider.get(random);
+		return RainDelay.thunderDelayProvider.get(random);
 	}
 
 	@Redirect(
@@ -53,7 +47,7 @@ public abstract class ServerLevelMixin {
 		)
 	)
 	private int redirectRainDuration(IntProvider provider, Random random) {
-		return rainDurationProvider.get(random);
+		return RainDelay.rainDurationProvider.get(random);
 	}
 
 	@Redirect(
@@ -65,7 +59,7 @@ public abstract class ServerLevelMixin {
 		)
 	)
 	private int redirectRainDelay(IntProvider provider, Random random) {
-		return rainDelayProvider.get(random);
+		return RainDelay.rainDelayProvider.get(random);
 	}
 
 	
