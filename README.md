@@ -1,5 +1,5 @@
 <div style="text-align: center;">
-    <img src="https://raw.githubusercontent.com/carter-ray/RainDelayMC/refs/heads/main/src/main/resources/icon.png" alt="RainDelay" width="300"/>
+    <img src="https://raw.githubusercontent.com/carter-ray/RainDelayMC/refs/heads/main/src/main/resources/assets/raindelay/icon.png" alt="RainDelay" width="300"/>
 </div>
 
 # Rain Delay MC
