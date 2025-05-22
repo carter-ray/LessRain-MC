@@ -26,7 +26,7 @@ public class RainDelayConfig {
     private static final Gson GSON = new GsonBuilder().setPrettyPrinting().create();
     private static final Path CONFIG_FILE = FabricLoader.getInstance().getConfigDir().resolve("raindelay.json");
 
-    public static RainDelayConfig INSTANCE = load();
+    public static RainDelayConfig INSTANCE = RainDelayConfig.load();
 
     public static RainDelayConfig load() {
         if (Files.exists(CONFIG_FILE)) {

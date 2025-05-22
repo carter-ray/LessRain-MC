@@ -1,0 +1,52 @@
+# Build and Release
+
+name: release
+on:
+  push:
+    tags:
+      - 'v*'
+jobs:
+  build:
+    runs-on: ubuntu-24.04
+    steps:
+      - name: checkout repository
+        uses: actions/checkout@v4
+      - name: validate gradle wrapper
+        uses: gradle/actions/wrapper-validation@v4
+      - name: setup jdk
+        uses: actions/setup-java@v4
+        with:
+          java-version: '21'
+          distribution: 'microsoft'
+      - name: make gradle wrapper executable
+        run: chmod +x ./gradlew
+      - name: build
+        run: ./gradlew build
+      - name: capture build artifacts
+        uses: actions/upload-artifact@v4
+        with:
+          name: Artifacts
+          path: build/libs/
+      - name: Create GitHub Release
+        uses: softprops/action-gh-release@v2
+        with:
+          files: build/libs/*.jar
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      - name: Publish to Modrinth
+        env:
+          MODRINTH_TOKEN: ${{ secrets.MODRINTH_TOKEN }}
+        run: |
+          MODRINTH_PROJECT_ID="your-modrinth-project-id-uuid"
+          MOD_FILE_PATH=$(echo build/libs/*.jar)
+
+          echo "Uploading $MOD_FILE_PATH to Modrinth project $MODRINTH_PROJECT_ID..."
+
+          curl -X POST "https://api.modrinth.com/v2/project/$MODRINTH_PROJECT_ID/version" \
+            -H "Authorization: $MODRINTH_TOKEN" \
+            -F "file=@$MOD_FILE_PATH" \
+            -F "version_number=${GITHUB_REF#refs/tags/}" \
+            -F "game_versions[]=1.21.5" \
+            -F "loaders[]=fabric" \
+            -F "changelog=Automated upload from GitHub Actions" \
+            -F "release_type=release"

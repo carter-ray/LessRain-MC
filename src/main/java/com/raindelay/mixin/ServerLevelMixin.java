@@ -13,7 +13,7 @@ import com.raindelay.RainDelay;
 
 @Mixin(ServerWorld.class)
 public abstract class ServerLevelMixin {
-	
+
 	@Redirect(
 		method = "tickWeather",
 		at = @At(
@@ -62,5 +62,4 @@ public abstract class ServerLevelMixin {
 		return RainDelay.rainDelayProvider.get(random);
 	}
 
-	
 }

@@ -9,7 +9,7 @@
 	],
 	"contact": {
 		"homepage": "https://fabricmc.net/",
-		"sources": "https://github.com/carter-ray/raindelay-MC"
+		"sources": "https://github.com/carter-ray/RainDelayMC"
 	},
 	"license": "CC0-1.0",
 	"icon": "assets/raindelay/icon.png",
@@ -18,7 +18,7 @@
 		"main": [
 			"com.raindelay.RainDelay"
 		],
-		"modmenu": [ 
+		"modmenu": [
 			"com.raindelay.RainDelayModMenu"
 		]
 	},
@@ -29,11 +29,12 @@
 		"fabricloader": ">=0.16.14",
 		"minecraft": "~1.21.5",
 		"java": ">=21",
-		"fabric-api": "*"
+		"fabric-api": "*",
+		"fabric-command-api-v2": "*"
 	},
 	"custom": {
   		"modmenu": {
-			"update_checker": true	
+			"update_checker": true
 		}
 	}
 
