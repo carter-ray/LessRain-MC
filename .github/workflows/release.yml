@@ -38,7 +38,7 @@ jobs:
           MODRINTH_TOKEN: ${{ secrets.MODRINTH_TOKEN }}
         run: |
           MODRINTH_PROJECT_ID="IWpkJwbO"
-          MOD_FILE_PATH=$(echo build/libs/*.jar)
+          MOD_FILE_PATH=$(ls -t build/libs/raindelay*.jar | grep -v 'sources' | head -n 1)
 
           echo "Uploading $MOD_FILE_PATH to Modrinth project $MODRINTH_PROJECT_ID..."
 
