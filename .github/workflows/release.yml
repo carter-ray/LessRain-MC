@@ -37,7 +37,7 @@ jobs:
         env:
           MODRINTH_TOKEN: ${{ secrets.MODRINTH_TOKEN }}
         run: |
-          MODRINTH_PROJECT_ID="your-modrinth-project-id-uuid"
+          MODRINTH_PROJECT_ID="IWpkJwbO"
           MOD_FILE_PATH=$(echo build/libs/*.jar)
 
           echo "Uploading $MOD_FILE_PATH to Modrinth project $MODRINTH_PROJECT_ID..."
