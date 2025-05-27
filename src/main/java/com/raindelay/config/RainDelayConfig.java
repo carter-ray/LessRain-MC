@@ -37,16 +37,22 @@ public class RainDelayConfig {
                 System.err.println("Failed to read config: " + e);
             }
         }
-        return new RainDelayConfig();
+        RainDelayConfig default_configs =  new RainDelayConfig();
+        default_configs.write_out();
+        return default_configs;
     }
-
-    public void save() {
+    
+    private void write_out() {
         try {
             Files.createDirectories(CONFIG_FILE.getParent());
             Files.writeString(CONFIG_FILE, GSON.toJson(this));
         } catch (IOException e) {
             System.err.println("Failed to save config: " + e);
         }
+    }
+
+    public void save() {
+        this.write_out();
         RainDelay.initProviders();
     }
 
